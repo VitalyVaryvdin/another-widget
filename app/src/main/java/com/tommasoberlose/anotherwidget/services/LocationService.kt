@@ -116,7 +116,7 @@ class LocationService : Service() {
                 .setColor(ContextCompat.getColor(this@LocationService, R.color.colorAccent))
 
             // Main intent that open the activity
-            builder.setContentIntent(PendingIntent.getActivity(this@LocationService, 0, Intent(this@LocationService, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT))
+            builder.setContentIntent(PendingIntent.getActivity(this@LocationService, 0, Intent(this@LocationService, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE))
 
             return builder.build()
         }

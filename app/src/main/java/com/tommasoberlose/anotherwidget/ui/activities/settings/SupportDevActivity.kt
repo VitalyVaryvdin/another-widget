@@ -67,10 +67,10 @@ class SupportDevActivity : AppCompatActivity(), PurchasesUpdatedListener {
 
     private fun subscribeUi(viewModel: SupportDevViewModel) {
         viewModel.products.observe(this, Observer {
-            if (it.isNotEmpty()) {
+            if (it?.isNotEmpty() == true) {
                 binding.loader.isVisible = false
             }
-            adapter.updateData(it.sortedWith(compareBy(SkuDetails::getPriceAmountMicros)))
+            adapter.updateData(it?.sortedWith(compareBy(SkuDetails::getPriceAmountMicros)) ?: null )
         })
     }
 

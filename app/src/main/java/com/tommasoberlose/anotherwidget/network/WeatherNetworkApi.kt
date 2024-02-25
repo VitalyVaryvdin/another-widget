@@ -40,6 +40,7 @@ class WeatherNetworkApi(val context: Context) {
                 Constants.WeatherProvider.HERE -> useHereProvider(context)
                 Constants.WeatherProvider.ACCUWEATHER -> useAccuweatherProvider(context)
                 Constants.WeatherProvider.YR -> useYrProvider(context)
+                else -> {}
             }
         } else {
             WeatherHelper.removeWeather(

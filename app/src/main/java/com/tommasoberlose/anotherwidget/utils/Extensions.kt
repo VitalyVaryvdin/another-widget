@@ -1,5 +1,6 @@
 package com.tommasoberlose.anotherwidget.utils
 
+import android.Manifest
 import android.animation.*
 import android.content.pm.PackageManager
 import android.view.View
@@ -26,6 +27,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.core.animation.addListener
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import com.tommasoberlose.anotherwidget.R
 import com.tommasoberlose.anotherwidget.components.OnSingleClickListener
@@ -213,6 +215,19 @@ fun Context.checkGrantedPermission(permission: String): Boolean {
 }
 
 fun Context.getCurrentWallpaper(): Drawable? = try {
+    if (ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ) != PackageManager.PERMISSION_GRANTED
+    ) {
+        // TODO: Consider calling
+        //    ActivityCompat#requestPermissions
+        // here to request the missing permissions, and then overriding
+        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+        //                                          int[] grantResults)
+        // to handle the case where the user grants the permission. See the documentation
+        // for ActivityCompat#requestPermissions for more details.
+    }
     WallpaperManager.getInstance(this).drawable
 } catch (e: Exception) {
     null

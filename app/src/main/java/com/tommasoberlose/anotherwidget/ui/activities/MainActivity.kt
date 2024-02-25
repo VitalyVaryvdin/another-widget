@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         setContentView(binding.root)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (mainNavController?.currentDestination?.id == R.id.appMainFragment) {
             if (settingsNavController?.navigateUp() == false) {

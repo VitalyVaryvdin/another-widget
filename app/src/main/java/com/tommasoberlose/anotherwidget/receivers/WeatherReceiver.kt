@@ -52,7 +52,8 @@ class WeatherReceiver : BroadcastReceiver() {
                         AlarmManager.RTC,
                         Calendar.getInstance().timeInMillis,
                         interval,
-                        PendingIntent.getBroadcast(context, 0, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE }, 0)
+                        PendingIntent.getBroadcast(context, 0, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE },
+                            PendingIntent.FLAG_IMMUTABLE)
                     )
                 }
             }
@@ -65,7 +66,8 @@ class WeatherReceiver : BroadcastReceiver() {
                         setExactAndAllowWhileIdle(
                             AlarmManager.RTC,
                             it * MINUTE,
-                            PendingIntent.getBroadcast(context, it, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE }, 0)
+                            PendingIntent.getBroadcast(context, it, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE },
+                                PendingIntent.FLAG_IMMUTABLE)
                         )
                     }
                 }
@@ -74,9 +76,11 @@ class WeatherReceiver : BroadcastReceiver() {
 
         fun removeUpdates(context: Context) {
             with(context.getSystemService(Context.ALARM_SERVICE) as AlarmManager) {
-                cancel(PendingIntent.getBroadcast(context, 0, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE }, 0))
+                cancel(PendingIntent.getBroadcast(context, 0, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE },
+                    PendingIntent.FLAG_IMMUTABLE))
                 listOf(10, 20, 30).forEach {
-                    cancel(PendingIntent.getBroadcast(context, it, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE }, 0))
+                    cancel(PendingIntent.getBroadcast(context, it, Intent(context, WeatherReceiver::class.java).apply { action = Actions.ACTION_WEATHER_UPDATE },
+                        PendingIntent.FLAG_IMMUTABLE))
                 }
             }
         }

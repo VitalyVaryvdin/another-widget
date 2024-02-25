@@ -239,9 +239,11 @@ class GlanceTabFragment : Fragment() {
                         isVisible = Preferences.customNotes != ""
                     }
                     Constants.GlanceProviderId.GOOGLE_FIT_STEPS -> {
-                        val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(
-                            context
-                        )
+                        val account: GoogleSignInAccount? = context?.let {
+                            GoogleSignIn.getLastSignedInAccount(
+                                it
+                            )
+                        }
                         if (GoogleSignIn.hasPermissions(
                                 account,
                                 FITNESS_OPTIONS

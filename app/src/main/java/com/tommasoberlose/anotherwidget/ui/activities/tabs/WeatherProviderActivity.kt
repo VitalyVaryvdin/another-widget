@@ -149,6 +149,7 @@ class WeatherProviderActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         setResult(Activity.RESULT_OK)
         finish()

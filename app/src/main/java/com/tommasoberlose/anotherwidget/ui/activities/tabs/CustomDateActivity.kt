@@ -163,6 +163,7 @@ class CustomDateActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         Preferences.blockingBulk {
             dateFormat = viewModel.dateInput.value ?: ""

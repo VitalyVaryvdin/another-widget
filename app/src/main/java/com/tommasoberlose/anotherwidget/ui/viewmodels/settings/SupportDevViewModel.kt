@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 class SupportDevViewModel : ViewModel() {
 
     lateinit var billingClient: BillingClient
-    val products: MutableLiveData<List<SkuDetails>> = MutableLiveData(emptyList())
+    val products: MutableLiveData<List<SkuDetails>?> = MutableLiveData(emptyList())
 
     fun openConnection() {
 

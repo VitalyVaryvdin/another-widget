@@ -94,6 +94,7 @@ class MediaInfoFormatActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         Preferences.blockingBulk {
             mediaInfoFormat = viewModel.mediaInfoFormatInput.value ?: ""
